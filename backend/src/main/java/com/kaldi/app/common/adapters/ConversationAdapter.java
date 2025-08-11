@@ -5,6 +5,7 @@ import com.kaldi.app.common.dto.UserDto;
 import com.kaldi.app.model.conversation.Conversation;
 import com.kaldi.app.model.room.Room;
 import jakarta.enterprise.context.ApplicationScoped;
+
 @ApplicationScoped
 public class ConversationAdapter {
 

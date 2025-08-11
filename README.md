@@ -70,26 +70,178 @@ npm start
 
 ### Endpoints
 
-#### Room Management
+#### Room
 | Endpoint | Method | Auth required | Description |
 |----------|--------|---------------|-------------|
 | `/rooms` | GET | No            | List all rooms |
 | `/rooms/{type}` | GET | No            | Get room details |
 
-#### Conversation Management
-| Endpoint | Method | Auth required | Description               |
-|----------|--------|---------------|---------------------------|
-| `/conversations` | GET | Yes           | List conversations        |
-| `/conversations/{uuid}/claim` | POST | Yes           | Claim conversation        |
-| `/conversations/{uuid}/messages` | GET | Yes           | Get conversation messages |
-| `/conversations/{uuid}/reply` | POST | Yes           | Send message reply        |
+Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown section for you:
 
-#### Requests body
+#### Conversation
+
+| Endpoint                         | Method | Auth required | Description               |
+|----------------------------------|--------|---------------|---------------------------|
+| `/conversations`                 | GET    | Yes           | List conversations        |
+| `/conversations/{uuid}/claim`    | POST   | Yes           | Claim conversation        |
+| `/conversations/{uuid}/messages` | GET  | Yes           | Get conversation messages |
+| `/conversations/{uuid}/reply`    | POST   | Yes           | Send message reply        |
+| `/conversations/start`           | POST   | No            | Initiates conversation    |
 
 
-#### Response body
+#### Request Body Examples
 
+**POST /conversations/start request example**
 
+```json
+{
+  "content": "Hello there!",
+  "roomType": "SERVICES",
+  "userDto": {
+    "username": "Obi-Wan Kenobi",
+    "role": "USER"
+  }
+}
+```
+
+**POST /conversations/{uuid}/reply request example**
+
+```json
+{
+  "content": "Yo",
+  "userDto": {
+    "username": "Obi-Wan Kenobi",
+    "role": "USER"
+  }
+}
+```
+
+**POST /conversations/{uuid}/claim request example**
+
+```json
+{
+  "content": "Hello there!",
+  "roomType": "SERVICES",
+  "userDto": {
+    "role": "USER",
+    "username": "Obi-Wan Kenobi"
+  }
+}
+```
+
+---
+#### Response Body Examples
+
+**GET /rooms response example**
+
+```json
+[
+  {
+    "description": "Technical Room",
+    "name": "TECHNICAL",
+    "roomType": "TECHNICAL"
+  },
+  {
+    "description": "Service requests Room",
+    "name": "SERVICES",
+    "roomType": "SERVICES"
+  },
+  {
+    "description": "General Chat Room",
+    "name": "CONVERSATIONAL",
+    "roomType": "CONVERSATIONAL"
+  }
+]
+```
+
+**GET /rooms/type response example**
+
+```json
+{
+  "description": "Service requests Room",
+  "name": "SERVICES",
+  "roomType": "SERVICES"
+}
+```
+
+---
+
+**POST /conversations/start response example**
+
+```json
+{
+  "content": "Hello there!",
+  "conversation": {
+    "roomType": "SERVICES",
+    "userDto": {
+      "role": "USER",
+      "username": "Obi-Wan Kenobi"
+    }
+  }
+}
+```
+
+**POST /conversations/{uuid}/reply response example**
+
+```json
+{
+  "content": "Yo",
+  "conversation": {
+    "roomType": "SERVICES",
+    "userDto": {
+      "role": "USER",
+      "username": "Obi-Wan Kenobi"
+    }
+  }
+}
+```
+
+---
+
+**GET /conversations response example**
+
+```json
+[
+  {
+    "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07",
+    "roomType": "SERVICES",
+    "status": "PENDING",
+    "userDto": {
+      "role": "USER",
+      "username": "Obi-Wan Kenobi"
+    }
+  }
+]
+```
+---
+
+**GET /conversations/{uuid}/messages response example**
+
+```json
+[
+  {
+    "content": "Hello there!",
+    "roomType": "SERVICES",
+    "status": "CLAIMED",
+    "userDto": {
+      "role": "USER",
+      "username": "Obi-Wan Kenobi"
+    },
+    "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07"
+  },
+  {
+    "content": "Yo",
+    "roomType": "SERVICES",
+    "status": "CLAIMED",
+    "userDto": {
+      "role": "USER",
+      "username": "Obi-Wan Kenobi"
+    },
+    "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07"
+  }
+]
+```
+---
 
 ## Authentication
 Pre-configured operator accounts:

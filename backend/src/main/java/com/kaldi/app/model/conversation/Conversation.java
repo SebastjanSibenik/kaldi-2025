@@ -13,14 +13,14 @@ public class Conversation extends BaseEntity {
 
     @Column(name = "customer_role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role customerRole; // Enum
+    private Role customerRole;
 
     @Column(name = "customer_username", nullable = false)
     private String customerUsername;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operator_id")
-    private User operator; // The assigned operator
+    private User operator;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id", nullable = false)
