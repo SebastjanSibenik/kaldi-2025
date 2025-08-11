@@ -30,7 +30,6 @@ public class MessageRepository {
         }
     }
 
-    @Transactional
     public Message getFirstMessage(UUID conversationUuid) {
         final String query =
                 """
@@ -56,7 +55,6 @@ public class MessageRepository {
         }
     }
 
-    @Transactional
     public List<Message> getConversationMessages(UUID conversationUuid) {
         final String query =
             """

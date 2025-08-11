@@ -20,7 +20,6 @@ public class ConversationRepository {
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional
     public Conversation getByUuid(UUID conversationUuid) {
         final String query =
                 """
@@ -40,7 +39,6 @@ public class ConversationRepository {
         }
     }
 
-    @Transactional
     public List<Conversation> list() {
         final String query =
                 """

@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "9c8b3a57-fae4-4ed3-9708-0f6c76499cbf",
+		"name": "Kaldi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47477175",
+		"_collection_link": "https://nekineki590-7183406.postman.co/workspace/neki-neki's-Workspace~5e3131e9-33e2-48ba-81da-cbd1eb1575fd/collection/47477175-9c8b3a57-fae4-4ed3-9708-0f6c76499cbf?action=share&source=collection_link&creator=47477175"
+	},
+	"item": [
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "GET - rooms",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - rooms/{roomType}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/rooms/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"rooms",
+								"services"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conversation",
+			"item": [
+				{
+					"name": "GET - conversations",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/conversations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"conversations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - {uuid}/claim",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/conversations/{uuid}/claim",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"{uuid}",
+								"claim"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - {uuid}/reply",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Ahhh general Kenobi!\",\r\n    \"userDto\": {\r\n        \"role\": \"OPERATOR\",\r\n        \"username\": \"Grievous\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/conversations/{}/reply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"{}",
+								"reply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - start",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Hello There!\",\r\n    \"userDto\": {\r\n        \"role\": \"USER\",\r\n        \"username\": \"Obi-Wan Kenobi\"\r\n    },\r\n    \"roomType\": \"TECHNICAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/conversations/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - {uuid}/messages",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/conversations/{}/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"conversations",
+								"{}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

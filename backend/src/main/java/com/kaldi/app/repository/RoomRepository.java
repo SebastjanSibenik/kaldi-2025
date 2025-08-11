@@ -33,7 +33,6 @@ public class RoomRepository {
         }
     }
 
-    @Transactional
     public Room getByType(RoomType roomType) {
         final String query =
                 """

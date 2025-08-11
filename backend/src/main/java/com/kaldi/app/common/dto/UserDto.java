@@ -1,10 +1,15 @@
 package com.kaldi.app.common.dto;
 
 import com.kaldi.app.common.enums.Role;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
 
+    @NotNull(message = "role cannot be null")
     private Role role;
+
+    @NotBlank(message = "username cannot be empty")
     private String username;
 
     public Role getRole() {

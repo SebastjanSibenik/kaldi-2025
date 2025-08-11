@@ -18,6 +18,14 @@ public enum ResponseStatus {
                     .build();
         }
     },
+    BAD_REQUEST {
+        @Override
+        public Response buildResponse(Object content) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(content)
+                    .build();
+        }
+    },
     NOT_FOUND {
         @Override
         public Response buildResponse(Object content) {

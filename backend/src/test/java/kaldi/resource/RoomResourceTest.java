@@ -28,7 +28,7 @@ class RoomResourceTest {
 
         when(roomService.getByType(roomType)).thenReturn(expectedResponse);
 
-        Response response = roomResource.getRoom(roomType);
+        Response response = roomResource.getRoom(roomType.toString());
 
         assertEquals(expectedResponse, response);
         verify(roomService).getByType(roomType);

@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
+import jakarta.transaction.Transactional;
 import org.jboss.logging.Logger;
 
 @ApplicationScoped
@@ -16,6 +17,7 @@ public class UserRepository {
     @PersistenceContext
     private EntityManager em;
 
+    @Transactional
     public void deleteAll() {
         final String query =
                 """
@@ -50,6 +52,7 @@ public class UserRepository {
         }
     }
 
+    @Transactional
     public void persist(User user) {
         try {
             em.persist(user);

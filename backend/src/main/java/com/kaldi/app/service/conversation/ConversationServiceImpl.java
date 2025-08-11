@@ -62,17 +62,17 @@ public class ConversationServiceImpl implements ConversationService {
     public Response claim(UUID conversationUuid, Principal principal) {
         LOGGER.debugf("POST /claim conversation %s operation started by %s.", conversationUuid, principal.getName());
         try {
-            Message message = messageService.getFistMessage(conversationUuid);
+            Message message = messageService.getFirstMessage(conversationUuid);
             // 1) Check authorization & authentication
             User operator = userRepository.getByUsername(principal.getName());
             if (operator == null || !operator.isOperator()) {
-                return buildResponse.createResponse(ResponseStatus.ERROR, "Unauthorized: only operators may claim conversations.");
+                return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, "Unauthorized: only operators may claim conversations.");
             }
 
             // 2) Atomic claim conversation
             boolean claimed = conversationRepository.claimConversation(conversationUuid, operator);
             if (!claimed) {
-                return buildResponse.createResponse(ResponseStatus.ERROR, String.format("Conversation with UUID: %s does not exist or is already claimed.", conversationUuid));
+                return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, String.format("Conversation with UUID: %s does not exist or is already claimed.", conversationUuid));
             }
 
             // 3) Re-fetch conversation for response DTO
@@ -98,7 +98,7 @@ public class ConversationServiceImpl implements ConversationService {
             Conversation conversation = conversationRepository.getByUuid(conversationUuid);
             if (conversation.getOperator() != null && !conversation.getOperator().getUsername().equals(securityContext.getUserPrincipal().getName())) {
                 String errorMessage = "Cannot view this conversation messages.";
-                throw new Exception(errorMessage);
+                return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, errorMessage);
             }
             List<Message> messages = messageService.getConversationMessages(conversationUuid);
             return buildResponse.createResponse(ResponseStatus.SUCCESS, messages
@@ -140,14 +140,14 @@ public class ConversationServiceImpl implements ConversationService {
         try {
             Conversation conversation = conversationRepository.getByUuid(conversationUuid);
             if (conversation == null) {
-                return buildResponse.createResponse(ResponseStatus.ERROR, String.format("Conversation with UUID: %s does not exist.", conversationUuid));
+                return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, String.format("Conversation with UUID: %s does not exist.", conversationUuid));
             }
 
-            User operator = userRepository.getByUsername(context.getUserPrincipal().getName());
             if (!Role.USER.equals(request.getUserDto().getRole())) {
+                User operator = userRepository.getByUsername(context.getUserPrincipal().getName());
                 User conversationOperator = conversation.getOperator();
                 if (conversationOperator == null || operator == null || !operator.getUuid().equals(conversationOperator.getUuid())) {
-                    return buildResponse.createResponse(ResponseStatus.ERROR,String.format("Conversation with UUID: %s is not claimed by you.", conversationUuid));
+                    return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, String.format("Conversation with UUID: %s is not claimed by you.", conversationUuid));
                 }
             }
 

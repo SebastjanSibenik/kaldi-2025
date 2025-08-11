@@ -6,6 +6,7 @@ import com.kaldi.app.service.conversation.ConversationService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -47,14 +48,14 @@ public class ConversationResource {
     @POST
     @Path("/{uuid}/reply")
     @PermitAll
-    public Response reply(@PathParam("uuid") UUID conversationUuid, @Context SecurityContext securityContext, MessageRequest request) throws Exception {
+    public Response reply(@PathParam("uuid") UUID conversationUuid, @Context SecurityContext securityContext, @Valid MessageRequest request) throws Exception {
         return conversationService.reply(conversationUuid, securityContext, request);
     }
 
     @POST
     @Path("/start")
     @PermitAll
-    public Response start(InitConversationRequest request) throws Exception {
+    public Response start(@Valid InitConversationRequest request) throws Exception {
         return conversationService.start(request);
     }
 }

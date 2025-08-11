@@ -19,8 +19,8 @@ public class RoomResource {
     @GET
     @PermitAll
     @Path("/{roomType}")
-    public Response getRoom(@PathParam("roomType") RoomType roomType) throws Exception {
-        return roomService.getByType(roomType); //ToDo Add TO UPERCASEE
+    public Response getRoom(@PathParam("roomType") String roomTypeStr) throws Exception {
+        return roomService.getByType(RoomType.valueOf(roomTypeStr.toUpperCase()));
     }
 
     @GET
