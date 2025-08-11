@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/db/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/InitConversationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/InitConversationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/MessageRequest.java" afterDir="false" />
+    <list default="true" id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="improvement: small improvements.">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
+    <list id="71767db5-0d20-4d66-ab3d-5df54d0f90c8" name="idea" comment="idea" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,10 +70,11 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "C:/Users/Uporabnik/IdeaProjects/kaldi",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
   <component name="RunAnythingCache">
@@ -174,16 +173,28 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="" />
+      <changelist id="71767db5-0d20-4d66-ab3d-5df54d0f90c8" name="idea" comment="" />
       <created>1754734379525</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1754734379525</updated>
     </task>
+    <task id="LOCAL-00001" summary="improvement: small improvements.">
+      <option name="closed" value="true" />
+      <created>1754929496127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754929496127</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/backend" />
     </ignored-roots>
+    <MESSAGE value="improvement: small improvements." />
+    <option name="LAST_COMMIT_MESSAGE" value="improvement: small improvements." />
   </component>
 </project>
