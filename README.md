@@ -37,6 +37,7 @@ Additionally, a basic frontend was quickly developed to facilitate easier testin
 1. Initialize database:
 ```cmd
 psql -U <your_username> -d postgres -c "DROP DATABASE IF EXISTS kaldi;"
+psql -U <your_username> -d postgres -c "CREATE DATABASE kaldi;"
 psql -U <your_username> -d kaldi -f backend/db/init.sql
 ```
 - You will be prompted to enter your PostgreSQL password.
