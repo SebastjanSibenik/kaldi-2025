@@ -1,17 +1,4 @@
 -- ============================================
--- CREATE DATABASE (only if it doesn't exist)
--- ============================================
-CREATE EXTENSION IF NOT EXISTS dblink;
-
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'kaldi') THEN
-        PERFORM dblink_exec('dbname=postgres', 'CREATE DATABASE kaldi');
-    END IF;
-END
-$$ LANGUAGE plpgsql;
-
--- ============================================
 -- DROP TABLES (RESET SCHEMA)
 -- ============================================
 DROP TABLE IF EXISTS messages CASCADE;

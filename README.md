@@ -1,11 +1,12 @@
 # Kaldi Application
 
 ## Project Overview
-This project was developed for the Kaldi 2025 technical homework. 
-It implements a simple REST API backend for a system with two types of clients:
+This project was created as part of the Kaldi 2025 technical homework assignment.
+It provides a simple REST API backend designed to support two types of clients.
+Additionally, a basic frontend was quickly developed to facilitate easier testing.
 
 ## Clients
-- **Mobile Users** (Mobile client:
+- **Mobile Users** (Mobile client):
   - Select chat rooms (Technical, Services, Conversational)
   - Send messages
   - Wait for operator responses
@@ -27,21 +28,25 @@ It implements a simple REST API backend for a system with two types of clients:
 
 ### Prerequisites
 - Java 17+
-- Node.js 16+ (Optional for frontend)
+- Node.js 16+ (Optional for frontend usage)
 - PostgreSQL 12+
 - Maven
 
 ### Backend Setup
+0. Open a command prompt in the `/kaldi-2025-main` folder
 1. Initialize database:
 ```cmd
-psql -U postgres -f backend/db/db.init.sql
+psql -U <your_username> -d postgres -f backend/db/drop_and_create_db.sql
+psql -U <your_username> -d kaldi -f backend/db/init.sql
 ```
+- You will be prompted to enter your PostgreSQL password.
 
 2. Start backend:
 ```cmd
 cd backend
 mvn clean compile quarkus:dev
 ```
+3. Backend server now runs at `http://localhost:8080`
 
 ### Frontend Setup
 ```cmd
@@ -70,6 +75,13 @@ npm start
 | `/conversations/{uuid}/claim` | POST | Yes           | Claim conversation        |
 | `/conversations/{uuid}/messages` | GET | Yes           | Get conversation messages |
 | `/conversations/{uuid}/reply` | POST | Yes           | Send message reply        |
+
+#### Requests body
+
+
+#### Response body
+
+
 
 ## Authentication
 Pre-configured operator accounts:
