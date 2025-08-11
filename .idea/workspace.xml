@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/db/init.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/Startup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/adapters/ConversationAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/adapters/MessageAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/adapters/RoomAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/dto/ConversationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/dto/MessageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/dto/RoomDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/enums/ConversationStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/enums/ResponseStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/enums/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/enums/RoomType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/InitConversationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/requests/MessageRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/response/BuildResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/common/response/ClaimResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/conversation/Conversation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/message/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/room/ConversationalRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/room/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/room/ServicesRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/room/TechnicalRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/model/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/repository/ConversationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/repository/MessageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/repository/RoomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/resource/ConversationResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/resource/RoomResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/conversation/ConversationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/conversation/ConversationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/message/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/message/MessageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/room/RoomService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/service/room/RoomServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/kaldi/resource/ConversationResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/kaldi/resource/RoomResourceTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "SebastjanSibenik"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SebastjanSibenik/kaldi-2025.git",
+    "accountId": "5acfcf10-e2c0-4280-a809-98c6ade2f650"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="312uEZ2wJdCi94y0WUWgNyuF9zE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.ConversationResourceTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConversationResourceTest (2).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConversationResourceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConversationResourceTest.testReply_Failure_OperatorRole_NotClaimed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RoomResourceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [clean,compile,quarkus:dev].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [clean,quarkus:dev].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [quarkus:add-extension...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [quarkus:dev...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.kaldi [quarkus:dev].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn quarkus:dev -Dquarkus.jvm-args=&quot;--add-opens java.base/java.lang=ALL-UNNAMED&quot; " />
+      <command value="mvn quarkus:dev" />
+      <command value="mvn quarkus:add-extension -Dextensions='security-jpa'" />
+      <command value="mvn quarkus:add-extension -Dextensions='security-jpa-reactive'" />
+      <command value="mvn quarkus:add-extension -Dextensions='quarkus-elytron-security-common'" />
+      <command value="mvn clean compile quarkus:dev" />
+      <command value="mvn clean install" />
+      <command value="mvn clean quarkus:dev " />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.ConversationResourceTest (1)">
+    <configuration name="ConversationResourceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kaldi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kaldi.app.resource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kaldi.app.resource" />
+      <option name="MAIN_CLASS_NAME" value="com.kaldi.app.resource.ConversationResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConversationResourceTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kaldi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ConversationResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConversationResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kaldi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kaldi.resource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kaldi.resource" />
+      <option name="MAIN_CLASS_NAME" value="kaldi.resource.ConversationResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConversationResourceTest.testReply_Failure_OperatorRole_NotClaimed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kaldi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kaldi.app.resource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kaldi.app.resource" />
+      <option name="MAIN_CLASS_NAME" value="com.kaldi.app.resource.ConversationResourceTest" />
+      <option name="METHOD_NAME" value="testReply_Failure_OperatorRole_NotClaimed" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoomResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kaldi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kaldi.app.resource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kaldi.app.resource" />
+      <option name="MAIN_CLASS_NAME" value="com.kaldi.app.resource.RoomResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ConversationResourceTest (1)" />
+        <item itemvalue="JUnit.ConversationResourceTest.testReply_Failure_OperatorRole_NotClaimed" />
+        <item itemvalue="JUnit.ConversationResourceTest (2)" />
+        <item itemvalue="JUnit.ConversationResourceTest" />
+        <item itemvalue="JUnit.RoomResourceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="" />
+      <created>1754734379525</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754734379525</updated>
+    </task>
+    <servers />
+  </component>
+</project>
