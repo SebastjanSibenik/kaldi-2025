@@ -36,7 +36,7 @@ Additionally, a basic frontend was quickly developed to facilitate easier testin
 0. Open a command prompt in the `/kaldi-2025-main` folder
 1. Initialize database:
 ```cmd
-psql -U <your_username> -d postgres -f backend/db/drop_and_create_db.sql
+psql -U <your_username> -d postgres -c "DROP DATABASE IF EXISTS kaldi;"
 psql -U <your_username> -d kaldi -f backend/db/init.sql
 ```
 - You will be prompted to enter your PostgreSQL password.
