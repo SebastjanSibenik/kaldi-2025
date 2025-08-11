@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8011f583-3939-4452-baad-b894cf13991d" name="Changes" comment="improvement: small improvements.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/Startup.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/Startup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/resource/RoomResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kaldi/app/resource/RoomResource.java" afterDir="false" />
     </list>
     <list id="71767db5-0d20-4d66-ab3d-5df54d0f90c8" name="idea" comment="idea" />
     <option name="SHOW_DIALOG" value="false" />

@@ -20,7 +20,7 @@ public class RoomResource {
     @PermitAll
     @Path("/{roomType}")
     public Response getRoom(@PathParam("roomType") RoomType roomType) throws Exception {
-        return roomService.getByType(roomType);
+        return roomService.getByType(roomType); //ToDo Add TO UPERCASEE
     }
 
     @GET

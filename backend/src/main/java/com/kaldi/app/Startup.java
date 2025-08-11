@@ -34,7 +34,7 @@ public class Startup {
         userRepository.persist(u2);
 
         User u3 = new User();
-        u2.setUsername("admin3")
+        u3.setUsername("admin3")
                 .setPassword(BcryptUtil.bcryptHash("admin3"))
                 .setRole(Role.OPERATOR.name());
         userRepository.persist(u3);

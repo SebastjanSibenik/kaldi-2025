@@ -1,115 +1,104 @@
-# Helpdesk Application (Kaldi Homework)
+# Kaldi Application
 
-## Project Description
+## Project Overview
+A system with REST API backend (Quarkus) and React frontend for mobile users and operators.
 
-This project implements a simple REST API backend for a helpdesk system with two types of clients:
+## System Components
+### User Roles
+- **Mobile Users**:
+  - Select chat rooms (Technical, Services, Conversational)
+  - Send messages
+  - Wait for operator responses
 
-- **Mobile users**: select a "room" (Technical, Services, Conversational), send messages, and wait for operator responses.
-- **Operators (web browser)**: log in, see pending conversations, claim conversations, and reply to users.
+- **Operators** (Web Interface):
+  - View pending conversations
+  - Claim conversations
+  - Reply to users
 
-The backend is built with **Quarkus** and uses **HTTP Basic Authentication**.  
-The frontend is a **React** application that communicates with the backend API.
+## Technical Stack
+| Component       | Technology       |
+|----------------|-----------------|
+| Backend        | Quarkus (Java)  |
+| Frontend       | React           |
+| Authentication | HTTP Basic Auth |
+| Database       | PostgreSQL      |
 
----
+## Installation Guide
 
-## Prerequisites
+### Prerequisites
+- Java 17+
+- Node.js 16+ (for frontend)
+- PostgreSQL 12+
+- Maven
 
-- Java 17+ (for Quarkus backend)  
-- Node.js 16+ and npm (for React frontend)  
-- PostgreSQL database  
-
----
-
-## Setup and Run Backend
-
-1. Create and initialize the PostgreSQL database:  
-   Run the `db.init.sql` script located in the `/db` folder to create tables and seed data.
-
-2. Set environment variables for database credentials:
-
-   **Linux/macOS:**
-
-   ```bash
-   export QUARKUS_DATASOURCE_USERNAME=your_db_user
-   export QUARKUS_DATASOURCE_PASSWORD=your_db_password
-   ```
-
-**Windows (PowerShell):**
-
-   ```powershell
-   setx QUARKUS_DATASOURCE_USERNAME "your_db_user"
-   setx QUARKUS_DATASOURCE_PASSWORD "your_db_password"
-   ```
-
-*Note: After running `setx`, restart your terminal or IDE for changes to take effect.*
-
-3. Build and run the backend using Maven:
-
-   **Linux/macOS:**
-
-   ```bash
-   ./mvnw clean compile quarkus:dev
-   ```
-
-   **Windows (Command Prompt or PowerShell):**
-
-   ```cmd
-   mvnw.cmd clean compile quarkus:dev
-   ```
-
-   Backend will start at [http://localhost:8080](http://localhost:8080)
-
----
-
-## Setup and Run Frontend
-
-1. Navigate to the frontend folder:
-
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the React development server:
-
-   ```bash
-   npm start
-   ```
-
-   Frontend will start at [http://localhost:3000](http://localhost:3000) and communicate with backend on port 8080.
-
----
-
-## Testing the Application
-
-- **Backend only:**  
-  Use tools like Postman or curl to call backend REST endpoints on `http://localhost:8080/api/v1/...`
-
-- **Full application (Frontend + Backend):**  
-  Run both backend and frontend as described above.  
-  Open your browser at [http://localhost:3000](http://localhost:3000) and interact with the UI.
-
----
-
-## Notes
-
-- The backend uses HTTP Basic authentication. Use operator credentials from the seeded users in the database to log in via frontend or API.
-- The `db.init.sql` script is included in the repo to create and seed the database; this ensures consistent setup for testing.
-
----
-
-## Contact
-
-For any questions, contact Sebastjan Sibenik.
-
----
-
-*Good luck and thank you for reviewing my homework!*
+### Backend Setup
+1. Initialize database:
+```bash
+psql -U postgres -f backend/db/db.init.sql
 ```
 
-This should render cleanly on GitHub and be easy to follow. Let me know if you want me to add anything else!
+2. Start backend:
+```bash
+cd backend
+mvn clean compile quarkus:dev
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm start
+```
+
+## API Documentation
+
+### Base URL
+`http://localhost:8080/api/v1`
+
+### Endpoints
+
+#### Room Management
+| Endpoint | Method | Auth | Description |
+|----------|--------|------|-------------|
+| `/rooms` | GET | No | List all rooms |
+| `/rooms/{type}` | GET | No | Get room details |
+
+#### Conversation Management
+| Endpoint | Method | Auth | Description |
+|----------|--------|------|-------------|
+| `/conversations` | GET | Yes | List conversations |
+| `/conversations/{uuid}/claim` | POST | Yes | Claim conversation |
+| `/conversations/{uuid}/messages` | GET | Yes | Get conversation messages |
+| `/conversations/{uuid}/reply` | POST | Yes | Send reply |
+
+## Authentication
+Pre-configured operator accounts:
+| Username | Password |
+|----------|----------|
+| admin1   | admin1   |
+| admin2   | admin2   |
+| admin3   | admin3   |
+| admin4   | admin4   |
+
+Use HTTP Basic Authentication for protected endpoints.
+
+## Database Schema
+Key tables:
+- `rooms` - Available chat rooms
+- `users` - System users
+- `conversations` - Active chats
+- `messages` - Conversation messages
+
+Initialize with `db.init.sql` script.
+
+## Troubleshooting
+- **Port conflicts**: Ensure ports 8080 (backend) and 3000 (frontend) are available
+- **Database issues**: Verify PostgreSQL is running and credentials match application.properties
+- **Authentication failures**: Check username/password combinations
+
+## Support
+For assistance contact:  
+**Sebastjan Šibenik**  
+📧 sebastjan.sibenik@gmail.com  
+📞 +386 40 172 326
+s consistent markdown styling with proper headers, code blocks, tables, and JSON examples for easy reading.
