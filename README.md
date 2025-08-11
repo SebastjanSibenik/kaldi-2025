@@ -1,18 +1,18 @@
 # Kaldi Application
 
 ## Project Overview
-A system with REST API backend (Quarkus) and React frontend for mobile users and operators.
+This project was developed for the Kaldi 2025 technical homework. 
+It implements a simple REST API backend for a system with two types of clients:
 
-## System Components
-### User Roles
-- **Mobile Users**:
+## Clients
+- **Mobile Users** (Mobile client:
   - Select chat rooms (Technical, Services, Conversational)
   - Send messages
   - Wait for operator responses
 
-- **Operators** (Web Interface):
+- **Operators** (Web client):
   - View pending conversations
-  - Claim conversations
+  - Claim pending conversations
   - Reply to users
 
 ## Technical Stack
@@ -27,24 +27,24 @@ A system with REST API backend (Quarkus) and React frontend for mobile users and
 
 ### Prerequisites
 - Java 17+
-- Node.js 16+ (for frontend)
+- Node.js 16+ (Optional for frontend)
 - PostgreSQL 12+
 - Maven
 
 ### Backend Setup
 1. Initialize database:
-```bash
+```cmd
 psql -U postgres -f backend/db/db.init.sql
 ```
 
 2. Start backend:
-```bash
+```cmd
 cd backend
 mvn clean compile quarkus:dev
 ```
 
 ### Frontend Setup
-```bash
+```cmd
 cd frontend
 npm install
 npm start
@@ -58,18 +58,18 @@ npm start
 ### Endpoints
 
 #### Room Management
-| Endpoint | Method | Auth | Description |
-|----------|--------|------|-------------|
-| `/rooms` | GET | No | List all rooms |
-| `/rooms/{type}` | GET | No | Get room details |
+| Endpoint | Method | Auth required | Description |
+|----------|--------|---------------|-------------|
+| `/rooms` | GET | No            | List all rooms |
+| `/rooms/{type}` | GET | No            | Get room details |
 
 #### Conversation Management
-| Endpoint | Method | Auth | Description |
-|----------|--------|------|-------------|
-| `/conversations` | GET | Yes | List conversations |
-| `/conversations/{uuid}/claim` | POST | Yes | Claim conversation |
-| `/conversations/{uuid}/messages` | GET | Yes | Get conversation messages |
-| `/conversations/{uuid}/reply` | POST | Yes | Send reply |
+| Endpoint | Method | Auth required | Description               |
+|----------|--------|---------------|---------------------------|
+| `/conversations` | GET | Yes           | List conversations        |
+| `/conversations/{uuid}/claim` | POST | Yes           | Claim conversation        |
+| `/conversations/{uuid}/messages` | GET | Yes           | Get conversation messages |
+| `/conversations/{uuid}/reply` | POST | Yes           | Send message reply        |
 
 ## Authentication
 Pre-configured operator accounts:
@@ -84,21 +84,20 @@ Use HTTP Basic Authentication for protected endpoints.
 
 ## Database Schema
 Key tables:
-- `rooms` - Available chat rooms
-- `users` - System users
-- `conversations` - Active chats
-- `messages` - Conversation messages
+- `rooms`
+- `users`
+- `conversations`
+- `messages`
 
-Initialize with `db.init.sql` script.
+Initialize with `db/init.sql` script.
 
 ## Troubleshooting
 - **Port conflicts**: Ensure ports 8080 (backend) and 3000 (frontend) are available
-- **Database issues**: Verify PostgreSQL is running and credentials match application.properties
+- **Database issues**: Verify PostgreSQL is running and credentials match
 - **Authentication failures**: Check username/password combinations
 
 ## Support
 For assistance contact:  
 **Sebastjan Šibenik**  
-📧 sebastjan.sibenik@gmail.com  
-📞 +386 40 172 326
-s consistent markdown styling with proper headers, code blocks, tables, and JSON examples for easy reading.
+sebastjan.sibenik@gmail.com  
++386 40 172 326
