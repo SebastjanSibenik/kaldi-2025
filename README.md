@@ -31,6 +31,7 @@ Additionally, a basic frontend was quickly developed to facilitate easier testin
 - Node.js 16+ (Optional for frontend usage)
 - PostgreSQL 12+
 - Maven
+- The kaldi-2025-main folder from GitHub
 
 ### Backend Setup
 0. Open a command prompt in the `/kaldi-2025-main` folder
@@ -50,16 +51,22 @@ mvn clean compile quarkus:dev
 3. Backend server now runs at `http://localhost:8080`
 
 ### Frontend Setup
+0. Open another command prompt in the `/kaldi-2025-main` folder
+1. Install and start NPM
 ```cmd
 cd frontend
 npm install
 npm start
 ```
+2. Frontend now listens at `http://localhost:3000/`
 
 ## API Documentation
 
-### Base URL
+### Base Backend URL
 `http://localhost:8080/api/v1`
+
+### Base Frontend URL
+`http://localhost:3000/`
 
 ### Endpoints
 
