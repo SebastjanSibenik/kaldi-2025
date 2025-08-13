@@ -85,7 +85,7 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 | `/conversations`                 | GET    | Yes           | List conversations        |
 | `/conversations/{uuid}/claim`    | POST   | Yes           | Claim conversation        |
 | `/conversations/{uuid}/messages` | GET  | Yes           | Get conversation messages |
-| `/conversations/{uuid}/reply`    | POST   | Yes           | Send message reply        |
+| `/conversations/{uuid}/reply`    | POST   | No           | Send message reply        |
 | `/conversations/start`           | POST   | No            | Initiates conversation    |
 
 
