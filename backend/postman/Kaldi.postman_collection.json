@@ -118,12 +118,12 @@
 							"type": "basic",
 							"basic": [
 								{
-									"key": "password",
+									"key": "username",
 									"value": "admin1",
 									"type": "string"
 								},
 								{
-									"key": "username",
+									"key": "password",
 									"value": "admin1",
 									"type": "string"
 								}
@@ -157,12 +157,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "admin1",
+									"value": "admin3",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "admin1",
+									"value": "admin3",
 									"type": "string"
 								}
 							]
@@ -171,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"Ahhh general Kenobi!\",\r\n    \"userDto\": {\r\n        \"role\": \"OPERATOR\",\r\n        \"username\": \"Grievous\"\r\n    }\r\n\r\n}",
+							"raw": "{\r\n  \"content\": \"Yo\",\r\n  \"sender\": {\r\n    \"username\": \"Obi-Wan Kenobi\",\r\n    \"role\": \"USER\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -179,7 +179,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/conversations/{}/reply",
+							"raw": "http://localhost:8080/api/v1/conversations/{uuid}/reply",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -189,7 +189,7 @@
 								"api",
 								"v1",
 								"conversations",
-								"{}",
+								"{uuid}",
 								"reply"
 							]
 						}
@@ -218,7 +218,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"Hello There!\",\r\n    \"userDto\": {\r\n        \"role\": \"USER\",\r\n        \"username\": \"Obi-Wan Kenobi\"\r\n    },\r\n    \"roomType\": \"TECHNICAL\"\r\n}",
+							"raw": "{\r\n  \"content\": \"Hello there!\",\r\n  \"sender\": {\r\n    \"username\": \"Obi-Wan Kenobi\",\r\n    \"role\": \"USER\"\r\n  },\r\n  \"roomType\": \"SERVICES\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,12 +250,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "admin1",
+									"value": "admin2",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "admin1",
+									"value": "admin2",
 									"type": "string"
 								}
 							]
@@ -263,7 +263,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/conversations/{}/messages",
+							"raw": "http://localhost:8080/api/v1/conversations/{uuid}/messages",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -273,7 +273,7 @@
 								"api",
 								"v1",
 								"conversations",
-								"{}",
+								"{uuid}",
 								"messages"
 							]
 						}
