@@ -76,7 +76,6 @@ npm start
 | `/rooms` | GET | No            | List all rooms |
 | `/rooms/{type}` | GET | No            | Get room details |
 
-Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown section for you:
 
 #### Conversation
 
