@@ -96,11 +96,11 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 ```json
 {
   "content": "Hello there!",
-  "roomType": "SERVICES",
-  "userDto": {
+  "sender": {
     "username": "Obi-Wan Kenobi",
     "role": "USER"
-  }
+  },
+  "roomType": "SERVICES"
 }
 ```
 
@@ -109,22 +109,9 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 ```json
 {
   "content": "Yo",
-  "userDto": {
+  "sender": {
     "username": "Obi-Wan Kenobi",
     "role": "USER"
-  }
-}
-```
-
-**POST /conversations/{uuid}/claim request example**
-
-```json
-{
-  "content": "Hello there!",
-  "roomType": "SERVICES",
-  "userDto": {
-    "role": "USER",
-    "username": "Obi-Wan Kenobi"
   }
 }
 ```
@@ -137,18 +124,18 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 ```json
 [
   {
-    "description": "Technical Room",
     "name": "TECHNICAL",
+    "description": "Technical Room",
     "roomType": "TECHNICAL"
   },
   {
-    "description": "Service requests Room",
     "name": "SERVICES",
+    "description": "Service requests Room",
     "roomType": "SERVICES"
   },
   {
-    "description": "General Chat Room",
     "name": "CONVERSATIONAL",
+    "description": "General Chat Room",
     "roomType": "CONVERSATIONAL"
   }
 ]
@@ -158,8 +145,8 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 
 ```json
 {
-  "description": "Service requests Room",
   "name": "SERVICES",
+  "description": "Service requests Room",
   "roomType": "SERVICES"
 }
 ```
@@ -171,12 +158,15 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 ```json
 {
   "content": "Hello there!",
+  "sender": {
+    "username": "Mr. Bean",
+    "role": "USER"
+  },
   "conversation": {
+    "uuid": "<uuid>",
+    "operator": null,
     "roomType": "SERVICES",
-    "userDto": {
-      "role": "USER",
-      "username": "Obi-Wan Kenobi"
-    }
+    "status": "PENDING"
   }
 }
 ```
@@ -186,12 +176,18 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 ```json
 {
   "content": "Yo",
+  "sender": {
+    "username": "Mr. Bean",
+    "role": "USER"
+  },
   "conversation": {
+    "uuid": "<uuid>",
+    "operator": {
+      "username": "Obi-Wan Kenobi",
+      "role": "USER"
+    },
     "roomType": "SERVICES",
-    "userDto": {
-      "role": "USER",
-      "username": "Obi-Wan Kenobi"
-    }
+    "status": "PENDING"
   }
 }
 ```
@@ -204,14 +200,28 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 [
   {
     "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07",
-    "roomType": "SERVICES",
-    "status": "PENDING",
-    "userDto": {
+    "operator": {
       "role": "USER",
       "username": "Obi-Wan Kenobi"
-    }
+    },
+    "status": "PENDING",
+    "roomType": "SERVICES"
   }
 ]
+```
+---
+
+**POST /conversations/{uuid}/claim response example**
+
+```json
+{
+  "content": "Hello there!",
+  "sender": {
+    "username": "Obi-Wan",
+    "role": "USER"
+  },
+  "roomType": "TECHNICAL"
+}
 ```
 ---
 
@@ -221,23 +231,32 @@ Sure! Here's a cleaned up, well-formatted, and pretty version of that Markdown s
 [
   {
     "content": "Hello there!",
-    "roomType": "SERVICES",
-    "status": "CLAIMED",
-    "userDto": {
+    "sender": {
       "role": "USER",
       "username": "Obi-Wan Kenobi"
     },
-    "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07"
+    "conversation": {
+      "uuid": "<uuid>",
+      "operator": {
+        "username": "Test Operator",
+        "role": "OPERATOR"
+      },
+      "roomType": "SERVICES",
+      "status": "PENDING"
+    }
   },
   {
     "content": "Yo",
-    "roomType": "SERVICES",
-    "status": "CLAIMED",
-    "userDto": {
+    "sender": {
       "role": "USER",
       "username": "Obi-Wan Kenobi"
     },
-    "uuid": "f0bf12e9-12f5-4931-99c7-d05aaecb7d07"
+    "conversation": {
+      "uuid": "<uuid>",
+      "operator": null,
+      "status": "PENDING",
+      "roomType": "SERVICES"
+    }
   }
 ]
 ```

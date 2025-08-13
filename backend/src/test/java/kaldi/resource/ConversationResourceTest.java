@@ -44,7 +44,7 @@ public class ConversationResourceTest {
         UserDto userDto = new UserDto();
         userDto.setRole(Role.USER);
         userDto.setUsername("testUser");
-        request.setUserDto(userDto);
+        request.setSender(userDto);
         request.setContent("Hello");
 
         // Mock service success response
@@ -64,7 +64,7 @@ public class ConversationResourceTest {
         UserDto userDto = new UserDto();
         userDto.setRole(Role.OPERATOR);
         userDto.setUsername("operatorUser");
-        request.setUserDto(userDto);
+        request.setSender(userDto);
         request.setContent("Hello");
 
         // Mock service to return error response (simulate not claimed)
@@ -88,7 +88,7 @@ public class ConversationResourceTest {
         UserDto userDto = new UserDto();
         userDto.setRole(Role.USER);
         userDto.setUsername("anyUser");
-        request.setUserDto(userDto);
+        request.setSender(userDto);
         request.setContent("Hello");
 
         // Simulate service throwing exception

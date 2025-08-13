@@ -10,15 +10,15 @@ import jakarta.persistence.*;
 public class Message extends BaseEntity {
 
     @Column(name = "content", nullable = false, updatable = false)
-    private String content;
+    private String content; // message data
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "conversation_id", nullable = false)
-    private Conversation conversation;
+    private Conversation conversation; // connection to the conversation
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role", nullable = false, updatable = false)
-    private Role userRole;
+    private Role userRole; // information about the user who sent the message
 
     public String getContent() {
         return content;

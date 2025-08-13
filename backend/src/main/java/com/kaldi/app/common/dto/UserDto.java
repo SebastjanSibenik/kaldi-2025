@@ -6,11 +6,20 @@ import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
 
+    @NotBlank(message = "username cannot be empty")
+    private String username;
+
     @NotNull(message = "role cannot be null")
     private Role role;
 
-    @NotBlank(message = "username cannot be empty")
-    private String username;
+    public String getUsername() {
+        return username;
+    }
+
+    public UserDto setUsername(String username) {
+        this.username = username;
+        return this;
+    }
 
     public Role getRole() {
         return role;
@@ -21,12 +30,12 @@ public class UserDto {
         return this;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public UserDto setUsername(String username) {
-        this.username = username;
-        return this;
+    @Override
+    public String toString() {
+        return String.format(
+                "UserDto{username='%s', role=%s}",
+                username,
+                role.toString()
+        );
     }
 }

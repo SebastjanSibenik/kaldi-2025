@@ -7,17 +7,35 @@ import java.util.UUID;
 
 public class ConversationDto {
 
-    private ConversationStatus conversationStatus;
-    private RoomType roomType;
-    private UserDto userDto;
     private UUID uuid;
+    private UserDto operator;
+    private ConversationStatus status;
+    private RoomType roomType;
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public ConversationDto setUuid(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
+
+    public UserDto getOperator() {
+        return operator;
+    }
+
+    public ConversationDto setOperator(UserDto operator) {
+        this.operator = operator;
+        return this;
+    }
 
     public ConversationStatus getStatus() {
-        return conversationStatus;
+        return status;
     }
 
     public ConversationDto setStatus(ConversationStatus conversationStatus) {
-        this.conversationStatus = conversationStatus;
+        this.status = conversationStatus;
         return this;
     }
 
@@ -30,31 +48,14 @@ public class ConversationDto {
         return this;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
-    }
-
-    public ConversationDto setUserDto(UserDto userDto) {
-        this.userDto = userDto;
-        return this;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public ConversationDto setUuid(UUID uuid) {
-        this.uuid = uuid;
-        return this;
-    }
-
     @Override
     public String toString() {
         return String.format(
-                "ConversationDto{roomType=%s, conversationStatus=%s, operator=%s}",
-                roomType,
-                conversationStatus,
-                userDto
+                "ConversationDto{uuid=%s, operator=%s, status=%s, roomType=%s}",
+                uuid,
+                operator,
+                status,
+                roomType
         );
     }
 }

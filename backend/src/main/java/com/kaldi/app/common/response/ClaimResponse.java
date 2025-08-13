@@ -6,8 +6,8 @@ import com.kaldi.app.common.enums.RoomType;
 public class ClaimResponse {
 
     private String content;
+    private UserDto sender;
     private RoomType roomType;
-    private UserDto userDto;
 
     public String getContent() {
         return content;
@@ -18,21 +18,21 @@ public class ClaimResponse {
         return this;
     }
 
+    public UserDto getSender() {
+        return sender;
+    }
+
+    public ClaimResponse setSender(UserDto sender) {
+        this.sender = sender;
+        return this;
+    }
+
     public RoomType getRoomType() {
         return roomType;
     }
 
     public ClaimResponse setRoomType(RoomType roomType) {
         this.roomType = roomType;
-        return this;
-    }
-
-    public UserDto getUserDto() {
-        return userDto;
-    }
-
-    public ClaimResponse setUserDto(UserDto userDto) {
-        this.userDto = userDto;
         return this;
     }
 }

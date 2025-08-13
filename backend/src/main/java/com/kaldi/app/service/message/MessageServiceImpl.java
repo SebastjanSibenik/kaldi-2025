@@ -33,10 +33,10 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message getFirstMessage(UUID conversationUuid) {
+    public Message getConversationFirstMessage(UUID conversationUuid) {
         LOGGER.debug("GET first message operation.");
         try {
-            return messageRepository.getFirstMessage(conversationUuid);
+            return messageRepository.getConversationFirstMessage(conversationUuid);
         } catch (Exception e) {
             LOGGER.errorf(e, "Exception during GET first message operation.");
             return null;

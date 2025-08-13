@@ -9,21 +9,10 @@ import jakarta.persistence.DiscriminatorValue;
 @ApplicationScoped
 public class RoomAdapter {
 
-    public Room toEntity(RoomDto dto) {
-        if (dto == null) {
-            return null;
-        }
-        return new Room()
-                .setDescription(dto.getDescription())
-                .setName(dto.getName())
-                .setRoomType(dto.getRoomType());
-    }
-
     public RoomDto toDto(Room entity) {
         if (entity == null) {
             return null;
         }
-
         return new RoomDto()
                 .setName(entity.getName())
                 .setDescription(entity.getDescription())
