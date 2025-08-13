@@ -2,7 +2,6 @@ package com.kaldi.app.service.conversation;
 
 import com.kaldi.app.common.adapters.ConversationAdapter;
 import com.kaldi.app.common.adapters.MessageAdapter;
-import com.kaldi.app.common.dto.ConversationDto;
 import com.kaldi.app.common.dto.MessageDto;
 import com.kaldi.app.common.enums.ConversationStatus;
 import com.kaldi.app.common.enums.ResponseStatus;
@@ -58,18 +57,17 @@ public class ConversationServiceImpl implements ConversationService {
     private MessageAdapter messageAdapter;
 
     @Override
-    @Transactional
     public Response claim(UUID conversationUuid, Principal principal) {
         LOGGER.debugf("POST /claim conversation %s operation started by %s.", conversationUuid, principal.getName());
         try {
-            Message message = messageService.getFirstMessage(conversationUuid);
             // 1) Check authorization & authentication
             User operator = userRepository.getByUsername(principal.getName());
             if (operator == null || !operator.isOperator()) {
                 return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, "Unauthorized: only operators may claim conversations.");
             }
 
-            // 2) Atomic claim conversation
+            // 2) Claim conversation
+            Message message = messageService.getConversationFirstMessage(conversationUuid);
             boolean claimed = conversationRepository.claimConversation(conversationUuid, operator);
             if (!claimed) {
                 return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, String.format("Conversation with UUID: %s does not exist or is already claimed.", conversationUuid));
@@ -79,7 +77,7 @@ public class ConversationServiceImpl implements ConversationService {
             MessageDto messageDto  = messageAdapter.toDto(message);
             ClaimResponse claimResponse = new ClaimResponse()
                     .setContent(messageDto.getContent())
-                    .setUserDto(messageDto.getConversation().getUserDto())
+                    .setSender(messageDto.getSender())
                     .setRoomType(messageDto.getConversation().getRoomType());
 
             return buildResponse.createResponse(ResponseStatus.SUCCESS, claimResponse);
@@ -90,7 +88,6 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    @Transactional
     public Response getMessages(UUID conversationUuid, SecurityContext securityContext) {
         LOGGER.debugf("GET /{uuid}/messages operation started.", conversationUuid);
         try {
@@ -112,17 +109,6 @@ public class ConversationServiceImpl implements ConversationService {
         }
     }
 
-    @Transactional
-    public ConversationDto create(InitConversationRequest request, Room room) {
-        Conversation conversation = new Conversation()
-                .setCustomerUsername(request.getUserDto().getUsername())
-                .setCustomerRole(request.getUserDto().getRole())
-                .setStatus(ConversationStatus.PENDING)
-                .setRoom(room);
-        conversationRepository.persist(conversation);
-        return conversationAdapter.toDto(conversation);
-    }
-
     @Override
     public Response list() {
         LOGGER.debug("GET /conversations operation started.");
@@ -134,7 +120,6 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    @Transactional
     public Response reply(UUID conversationUuid, SecurityContext context, MessageRequest request) {
         LOGGER.debugf("POST /conversations/%s/reply operation started.", conversationUuid);
         try {
@@ -143,7 +128,7 @@ public class ConversationServiceImpl implements ConversationService {
                 return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, String.format("Conversation with UUID: %s does not exist.", conversationUuid));
             }
 
-            if (!Role.USER.equals(request.getUserDto().getRole())) {
+            if (!Role.USER.equals(request.getSender().getRole())) {
                 User operator = userRepository.getByUsername(context.getUserPrincipal().getName());
                 User conversationOperator = conversation.getOperator();
                 if (conversationOperator == null || operator == null || !operator.getUuid().equals(conversationOperator.getUuid())) {
@@ -151,7 +136,7 @@ public class ConversationServiceImpl implements ConversationService {
                 }
             }
 
-            Message message = messageService.createMessageAndSave(conversation, request.getUserDto().getRole(), request.getContent());
+            Message message = messageService.createMessageAndSave(conversation, request.getSender().getRole(), request.getContent());
             return buildResponse.createResponse(ResponseStatus.SUCCESS, messageAdapter.toDto(message));
         } catch (Exception e) {
             LOGGER.errorf(e, "Exception during replying to message.");
@@ -160,7 +145,6 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    @Transactional
     public Response start(InitConversationRequest request) throws Exception {
         LOGGER.debug("POST /conversation/start operation started.");
         try {
@@ -169,15 +153,21 @@ public class ConversationServiceImpl implements ConversationService {
                 throw new IllegalArgumentException(String.format("Room not found by type: %s", request.getRoomType()));
             }
 
-            ConversationDto conversationDto = create(request, room);
-
-            Conversation conversation = conversationRepository.getByUuid(conversationDto.getUuid());
-            Message message = messageService.createMessageAndSave(conversation, request.getUserDto().getRole(), request.getContent());
-
+            Message message = messageService.createMessageAndSave(create(request, room), request.getSender().getRole(), request.getContent());
             return buildResponse.createResponse(ResponseStatus.SUCCESS, messageAdapter.toDto(message));
         } catch (Exception e) {
             LOGGER.errorf(e, "Exception during post message operation.");
             throw e;
         }
+    }
+
+    @Transactional
+    public Conversation create(InitConversationRequest request, Room room) {
+        Conversation conversation = new Conversation()
+                .setConversationInitiator(request.getSender().getUsername())
+                .setStatus(ConversationStatus.PENDING)
+                .setRoom(room);
+        conversationRepository.persist(conversation);
+        return conversation;
     }
 }

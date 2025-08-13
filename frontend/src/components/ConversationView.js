@@ -20,9 +20,9 @@ function ConversationView({ selectedRoom, messages, inputMessage, setInputMessag
               {messages.map((msg, i) => (
                 <tr key={i}>
                   <td style={styles.td}>
-                    {msg.userDto?.username ||
+                    {msg.sender?.username ||
                      msg.username ||
-                     msg.conversation?.userDto?.role ||
+                     msg.conversation?.sender?.role ||
                      msg.userRole ||
                      "unknown"}
                   </td>

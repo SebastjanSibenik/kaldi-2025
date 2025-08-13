@@ -4,18 +4,9 @@ import com.kaldi.app.common.enums.RoomType;
 
 public class RoomDto {
 
-    private String description;
     private String name;
+    private String description;
     private RoomType roomType;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public RoomDto setDescription(String description) {
-        this.description = description;
-        return this;
-    }
 
     public String getName() {
         return name;
@@ -23,6 +14,15 @@ public class RoomDto {
 
     public RoomDto setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public RoomDto setDescription(String description) {
+        this.description = description;
         return this;
     }
 

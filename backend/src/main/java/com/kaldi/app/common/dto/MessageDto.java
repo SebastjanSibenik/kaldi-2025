@@ -1,22 +1,10 @@
 package com.kaldi.app.common.dto;
 
-import com.kaldi.app.common.enums.RoomType;
-
 public class MessageDto {
 
-    private ConversationDto conversationDto;
     private String content;
-    private RoomType roomType;
-    private UserDto userDto;
-
-    public ConversationDto getConversation() {
-        return conversationDto;
-    }
-
-    public MessageDto setConversation(ConversationDto conversationDto) {
-        this.conversationDto = conversationDto;
-        return this;
-    }
+    private UserDto sender;
+    private ConversationDto conversationDto;
 
     public String getContent() {
         return content;
@@ -27,32 +15,31 @@ public class MessageDto {
         return this;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public UserDto getSender() {
+        return sender;
     }
 
-    public MessageDto setRoomType(RoomType roomType) {
-        this.roomType = roomType;
+    public MessageDto setSender(UserDto sender) {
+        this.sender = sender;
         return this;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public ConversationDto getConversation() {
+        return conversationDto;
     }
 
-    public MessageDto setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public MessageDto setConversation(ConversationDto conversationDto) {
+        this.conversationDto = conversationDto;
         return this;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "MessageDto{content='%s', conversation=%s, userDto=%s, roomType=%s}",
+                "MessageDto{content='%s', sender=%s, conversation=%s}",
                 content,
-                conversationDto,
-                userDto,
-                roomType
+                sender,
+                conversationDto
         );
     }
 }

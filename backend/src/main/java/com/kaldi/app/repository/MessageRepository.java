@@ -30,7 +30,7 @@ public class MessageRepository {
         }
     }
 
-    public Message getFirstMessage(UUID conversationUuid) {
+    public Message getConversationFirstMessage(UUID conversationUuid) {
         final String query =
                 """
                 SELECT m

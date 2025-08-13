@@ -47,8 +47,7 @@ CREATE TABLE conversations (
     uuid UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     room_id UUID NOT NULL,
     operator UUID,
-    customer_username VARCHAR(255) NOT NULL,
-    customer_role VARCHAR(50) NOT NULL, -- enum stored as string
+    conversation_initiator VARCHAR(255) NOT NULL,
     status VARCHAR(50) NOT NULL,
     created TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
@@ -62,7 +61,7 @@ CREATE INDEX idx_conversations_room_id ON conversations(room_id);
 CREATE INDEX idx_conversations_operator ON conversations(operator);
 CREATE INDEX idx_conversations_status ON conversations(status);
 CREATE INDEX idx_conversations_created ON conversations(created DESC);
-CREATE INDEX idx_conversations_customer_username ON conversations(customer_username);
+CREATE INDEX idx_conversations_conversation_initiator ON conversations(conversation_initiator);
 
 -- ============================================
 -- MESSAGES TABLE

@@ -1,7 +1,6 @@
 package com.kaldi.app.model.conversation;
 
 import com.kaldi.app.common.enums.ConversationStatus;
-import com.kaldi.app.common.enums.Role;
 import com.kaldi.app.model.BaseEntity;
 import com.kaldi.app.model.room.Room;
 import com.kaldi.app.model.user.User;
@@ -11,12 +10,8 @@ import jakarta.persistence.*;
 @Table(name = "conversations")
 public class Conversation extends BaseEntity {
 
-    @Column(name = "customer_role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role customerRole;
-
-    @Column(name = "customer_username", nullable = false)
-    private String customerUsername;
+    @Column(name = "conversation_initiator", nullable = false)
+    private String conversationInitiator;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operator_id")
@@ -30,22 +25,12 @@ public class Conversation extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ConversationStatus status;
 
-
-    public Role getCustomerRole() {
-        return customerRole;
+    public String getConversationInitiator() {
+        return conversationInitiator;
     }
 
-    public Conversation setCustomerRole(Role customerRole) {
-        this.customerRole = customerRole;
-        return this;
-    }
-
-    public String getCustomerUsername() {
-        return customerUsername;
-    }
-
-    public Conversation setCustomerUsername(String customerUsername) {
-        this.customerUsername = customerUsername;
+    public Conversation setConversationInitiator(String conversationInitiator) {
+        this.conversationInitiator = conversationInitiator;
         return this;
     }
 

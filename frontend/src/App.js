@@ -111,7 +111,7 @@ const sendMessage = async () => {
       },
       body: JSON.stringify({
         content: inputMessage,
-        userDto: {
+        sender: {
           username: operatorUsername || "operator",
           role: "OPERATOR",
         },
@@ -202,7 +202,7 @@ const sendUserMessage = async () => {
         body: JSON.stringify({
           content: inputMessage,
           roomType: roomType,
-          userDto: {
+          sender: {
             username: username,
             role: "USER",
           },
@@ -220,7 +220,7 @@ const sendUserMessage = async () => {
             ...roomMsgs,
             {
               content: inputMessage,
-              userDto: { role: "USER", username },
+              sender: { role: "USER", username },
               roomDto: { name: selectedRoom.name },
             },
           ],
@@ -235,7 +235,7 @@ const sendUserMessage = async () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           content: inputMessage,
-          userDto: {
+          sender: {
             username: username,
             role: "USER",
           },
@@ -250,7 +250,7 @@ const sendUserMessage = async () => {
             ...roomMsgs,
             {
               content: inputMessage,
-              userDto: { role: "USER", username },
+              sender: { role: "USER", username },
               roomDto: { name: selectedRoom.name },
             },
           ],

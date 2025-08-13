@@ -13,8 +13,8 @@ public class MessageRequest {
     private String content;
 
     @Valid
-    @NotNull(message = "UserDto cannot be null")
-    private UserDto userDto;
+    @NotNull(message = "sender cannot be null")
+    private UserDto sender;
 
     public String getContent() {
         return content;
@@ -24,11 +24,11 @@ public class MessageRequest {
         this.content = content;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public UserDto getSender() {
+        return sender;
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public void setSender(UserDto sender) {
+        this.sender = sender;
     }
 }

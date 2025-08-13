@@ -11,7 +11,7 @@ public interface MessageService {
 
     Message createMessageAndSave(Conversation conversation, Role userRole, String content) throws Exception;
 
-    Message getFirstMessage(UUID conversationUuid) throws Exception;
+    Message getConversationFirstMessage(UUID conversationUuid) throws Exception;
 
     List<Message> getConversationMessages(UUID conversationUuid) throws Exception;
 }
