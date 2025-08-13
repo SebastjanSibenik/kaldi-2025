@@ -129,6 +129,9 @@ public class ConversationServiceImpl implements ConversationService {
             }
 
             if (!Role.USER.equals(request.getSender().getRole())) {
+                if (context.getUserPrincipal() == null) {
+                    return buildResponse.createResponse(ResponseStatus.BAD_REQUEST, "Role is set to OPERATOR, but no valid credentials found.");
+                }
                 User operator = userRepository.getByUsername(context.getUserPrincipal().getName());
                 User conversationOperator = conversation.getOperator();
                 if (conversationOperator == null || operator == null || !operator.getUuid().equals(conversationOperator.getUuid())) {
