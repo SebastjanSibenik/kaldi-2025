@@ -46,19 +46,19 @@ CREATE INDEX idx_rooms_room_type ON rooms(room_type);
 CREATE TABLE conversations (
     uuid UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     room_id UUID NOT NULL,
-    operator UUID,
+    operator_id UUID,
     conversation_initiator VARCHAR(255) NOT NULL,
     status VARCHAR(50) NOT NULL,
     created TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     version BIGINT DEFAULT 0,
     CONSTRAINT fk_conversations_room FOREIGN KEY (room_id) REFERENCES rooms(uuid) ON DELETE CASCADE,
-    CONSTRAINT fk_conversations_operator FOREIGN KEY (operator) REFERENCES users(uuid) ON DELETE SET NULL
+    CONSTRAINT fk_conversations_operator_id FOREIGN KEY (operator_id) REFERENCES users(uuid) ON DELETE SET NULL
 );
 
 -- Indexes for performance
 CREATE INDEX idx_conversations_room_id ON conversations(room_id);
-CREATE INDEX idx_conversations_operator ON conversations(operator);
+CREATE INDEX idx_conversations_operator_id ON conversations(operator_id);
 CREATE INDEX idx_conversations_status ON conversations(status);
 CREATE INDEX idx_conversations_created ON conversations(created DESC);
 CREATE INDEX idx_conversations_conversation_initiator ON conversations(conversation_initiator);
